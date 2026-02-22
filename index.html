@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI HTML Entity Reference - Search &amp; Copy HTML Entities</title>
+<meta name="description" content="Complete HTML entity reference with 300+ entities. Search, browse by category, and copy HTML entities instantly. Includes symbols, arrows, math, currency, Greek letters and more.">
+<meta name="keywords" content="HTML entities, HTML symbols, HTML characters, HTML codes, special characters, unicode, copy HTML entity">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#38;</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#1a1a2e;--card:#16213e;--card-hover:#1a2745;--primary:#0f3460;--accent:#e94560;--blue:#4fc3f7;--cyan:#00e5ff;--text:#e0e0e0;--text-dim:#8892a4;--border:#2a3a5c;--success:#4caf50;--radius:10px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+a{color:var(--blue);text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+header{background:linear-gradient(135deg,#0f3460 0%,#16213e 50%,#1a1a2e 100%);padding:40px 0 20px;text-align:center;border-bottom:1px solid var(--border)}
+header h1{font-size:2rem;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+header p{color:var(--text-dim);font-size:0.95rem}
+.stats{display:flex;gap:20px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.stats span{background:var(--card);padding:6px 16px;border-radius:20px;font-size:0.85rem;color:var(--blue);border:1px solid var(--border)}
+.search-wrap{position:sticky;top:0;z-index:100;background:var(--bg);padding:16px 0;border-bottom:1px solid var(--border)}
+.search-box{position:relative;max-width:600px;margin:0 auto}
+.search-box input{width:100%;padding:14px 20px 14px 48px;border-radius:50px;border:2px solid var(--border);background:var(--card);color:var(--text);font-size:1rem;outline:none;transition:border-color .3s}
+.search-box input:focus{border-color:var(--blue)}
+.search-box input::placeholder{color:var(--text-dim)}
+.search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:1.1rem}
+.search-count{text-align:center;margin-top:8px;font-size:0.85rem;color:var(--text-dim)}
+.categories{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:16px 0}
+.cat-btn{padding:8px 18px;border-radius:25px;border:1px solid var(--border);background:var(--card);color:var(--text-dim);cursor:pointer;font-size:0.85rem;transition:all .3s;white-space:nowrap}
+.cat-btn:hover{border-color:var(--blue);color:var(--blue)}
+.cat-btn.active{background:linear-gradient(135deg,#0f3460,#1a3a6a);border-color:var(--blue);color:var(--blue);font-weight:600}
+.table-wrap{overflow-x:auto;margin:0 0 40px;border-radius:var(--radius);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;min-width:700px}
+thead{background:var(--primary)}
+thead th{padding:14px 16px;text-align:left;font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.5px;color:var(--blue);border-bottom:2px solid var(--border);position:sticky;top:0}
+tbody tr{border-bottom:1px solid var(--border);transition:background .2s}
+tbody tr:hover{background:var(--card-hover)}
+tbody td{padding:12px 16px;font-size:0.9rem;vertical-align:middle}
+.char-preview{font-size:1.8rem;text-align:center;min-width:50px;color:#fff}
+.entity-name{font-family:'SF Mono',Monaco,Consolas,monospace;color:var(--cyan);font-size:0.85rem;cursor:pointer;padding:3px 8px;background:rgba(79,195,247,0.08);border-radius:4px;display:inline-block;transition:background .2s}
+.entity-name:hover{background:rgba(79,195,247,0.18)}
+.entity-code{font-family:'SF Mono',Monaco,Consolas,monospace;color:var(--text-dim);font-size:0.85rem;cursor:pointer;padding:3px 8px;background:rgba(255,255,255,0.04);border-radius:4px;display:inline-block;transition:background .2s}
+.entity-code:hover{background:rgba(255,255,255,0.1)}
+.desc{color:var(--text-dim);font-size:0.85rem}
+.copy-btns{display:flex;gap:6px;flex-wrap:nowrap}
+.copy-btn{padding:5px 12px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text-dim);cursor:pointer;font-size:0.75rem;transition:all .2s;white-space:nowrap;position:relative}
+.copy-btn:hover{border-color:var(--blue);color:var(--blue);background:rgba(79,195,247,0.08)}
+.copy-btn.copied{border-color:var(--success);color:var(--success);background:rgba(76,175,80,0.1)}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--success);color:#fff;padding:12px 28px;border-radius:50px;font-size:0.9rem;z-index:9999;transition:transform .3s ease;pointer-events:none;box-shadow:0 4px 20px rgba(76,175,80,0.4)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.no-results{text-align:center;padding:60px 20px;color:var(--text-dim)}
+.no-results .icon{font-size:3rem;margin-bottom:16px}
+.no-results p{font-size:1.1rem}
+footer{text-align:center;padding:30px 0;color:var(--text-dim);font-size:0.8rem;border-top:1px solid var(--border)}
+footer a{color:var(--blue)}
+@media(max-width:768px){
+header h1{font-size:1.5rem}
+header{padding:24px 0 16px}
+.categories{gap:6px}
+.cat-btn{padding:6px 14px;font-size:0.8rem}
+.copy-btns{flex-direction:column;gap:4px}
+.copy-btn{padding:4px 8px;font-size:0.7rem}
+thead th,tbody td{padding:10px 10px}
+.char-preview{font-size:1.4rem}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<h1>&#38;#x2728; AI HTML Entity Reference</h1>
+<p>Search, browse, and copy 300+ HTML entities instantly</p>
+<div class="stats">
+<span id="totalCount">327 Entities</span>
+<span>8 Categories</span>
+<span>One-Click Copy</span>
+</div>
+</div>
+</header>
+
+<div class="search-wrap">
+<div class="container">
+<div class="search-box">
+<span class="search-icon">&#128269;</span>
+<input type="text" id="searchInput" placeholder="Search by name, code, description..." autocomplete="off" aria-label="Search HTML entities">
+</div>
+<div class="search-count" id="searchCount"></div>
+</div>
+</div>
+
+<div class="container">
+<div class="categories" id="categories" role="tablist">
+<button class="cat-btn active" data-cat="all" role="tab" aria-selected="true">All</button>
+<button class="cat-btn" data-cat="common" role="tab">&#9733; Common</button>
+<button class="cat-btn" data-cat="arrows" role="tab">&#8594; Arrows</button>
+<button class="cat-btn" data-cat="math" role="tab">&#8721; Math</button>
+<button class="cat-btn" data-cat="currency" role="tab">&#36; Currency</button>
+<button class="cat-btn" data-cat="greek" role="tab">&#945; Greek</button>
+<button class="cat-btn" data-cat="punctuation" role="tab">&#8230; Punctuation</button>
+<button class="cat-btn" data-cat="technical" role="tab">&#9881; Technical</button>
+<button class="cat-btn" data-cat="shapes" role="tab">&#9632; Shapes</button>
+</div>
+
+<div class="table-wrap">
+<table id="entityTable" role="grid">
+<thead>
+<tr>
+<th scope="col" style="width:60px">Char</th>
+<th scope="col">Entity Name</th>
+<th scope="col">HTML Code</th>
+<th scope="col">Description</th>
+<th scope="col" style="width:200px">Copy</th>
+</tr>
+</thead>
+<tbody id="entityBody"></tbody>
+</table>
+<div class="no-results" id="noResults" style="display:none">
+<div class="icon">&#128270;</div>
+<p>No entities found. Try a different search term.</p>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="container">
+<p>AI HTML Entity Reference &mdash; A comprehensive tool for web developers</p>
+<p style="margin-top:6px">Built with &#10084;&#65039; for the web community</p>
+</div>
+</footer>
+
+<div class="toast" id="toast">Copied!</div>
+
+<script>
+const ENTITIES = [{"name": "amp", "code": 38, "desc": "Ampersand", "cat": "common"}, {"name": "lt", "code": 60, "desc": "Less than", "cat": "common"}, {"name": "gt", "code": 62, "desc": "Greater than", "cat": "common"}, {"name": "quot", "code": 34, "desc": "Quotation mark", "cat": "common"}, {"name": "apos", "code": 39, "desc": "Apostrophe", "cat": "common"}, {"name": "nbsp", "code": 160, "desc": "Non-breaking space", "cat": "common"}, {"name": "copy", "code": 169, "desc": "Copyright", "cat": "common"}, {"name": "reg", "code": 174, "desc": "Registered", "cat": "common"}, {"name": "trade", "code": 8482, "desc": "Trademark", "cat": "common"}, {"name": "sect", "code": 167, "desc": "Section", "cat": "common"}, {"name": "para", "code": 182, "desc": "Paragraph / Pilcrow", "cat": "common"}, {"name": "dagger", "code": 8224, "desc": "Dagger", "cat": "common"}, {"name": "Dagger", "code": 8225, "desc": "Double dagger", "cat": "common"}, {"name": "laquo", "code": 171, "desc": "Left angle quote", "cat": "common"}, {"name": "raquo", "code": 187, "desc": "Right angle quote", "cat": "common"}, {"name": "ordf", "code": 170, "desc": "Feminine ordinal", "cat": "common"}, {"name": "ordm", "code": 186, "desc": "Masculine ordinal", "cat": "common"}, {"name": "macr", "code": 175, "desc": "Macron", "cat": "common"}, {"name": "deg", "code": 176, "desc": "Degree", "cat": "common"}, {"name": "micro", "code": 181, "desc": "Micro sign", "cat": "common"}, {"name": "middot", "code": 183, "desc": "Middle dot", "cat": "common"}, {"name": "iexcl", "code": 161, "desc": "Inverted exclamation", "cat": "common"}, {"name": "iquest", "code": 191, "desc": "Inverted question mark", "cat": "common"}, {"name": "brvbar", "code": 166, "desc": "Broken bar", "cat": "common"}, {"name": "loz", "code": 9674, "desc": "Lozenge", "cat": "common"}, {"name": "spades", "code": 9824, "desc": "Spade suit", "cat": "common"}, {"name": "clubs", "code": 9827, "desc": "Club suit", "cat": "common"}, {"name": "hearts", "code": 9829, "desc": "Heart suit", "cat": "common"}, {"name": "diams", "code": 9830, "desc": "Diamond suit", "cat": "common"}, {"name": "check", "code": 10003, "desc": "Check mark", "cat": "common"}, {"name": "cross", "code": 10007, "desc": "Ballot X", "cat": "common"}, {"name": "star", "code": 9733, "desc": "Black star", "cat": "common"}, {"name": "starf", "code": 9734, "desc": "White star", "cat": "common"}, {"name": "phone", "code": 9742, "desc": "Telephone", "cat": "common"}, {"name": "female", "code": 9792, "desc": "Female sign", "cat": "common"}, {"name": "male", "code": 9794, "desc": "Male sign", "cat": "common"}, {"name": "sun", "code": 9788, "desc": "Sun", "cat": "common"}, {"name": "cloud", "code": 9729, "desc": "Cloud", "cat": "common"}, {"name": "umbrella", "code": 9730, "desc": "Umbrella", "cat": "common"}, {"name": "snowflake", "code": 10052, "desc": "Snowflake", "cat": "common"}, {"name": "music", "code": 9834, "desc": "Eighth note", "cat": "common"}, {"name": "flat", "code": 9837, "desc": "Music flat", "cat": "common"}, {"name": "sharp", "code": 9839, "desc": "Music sharp", "cat": "common"}, {"name": "larr", "code": 8592, "desc": "Left arrow", "cat": "arrows"}, {"name": "uarr", "code": 8593, "desc": "Up arrow", "cat": "arrows"}, {"name": "rarr", "code": 8594, "desc": "Right arrow", "cat": "arrows"}, {"name": "darr", "code": 8595, "desc": "Down arrow", "cat": "arrows"}, {"name": "harr", "code": 8596, "desc": "Left right arrow", "cat": "arrows"}, {"name": "varr", "code": 8597, "desc": "Up down arrow", "cat": "arrows"}, {"name": "nwarr", "code": 8598, "desc": "Northwest arrow", "cat": "arrows"}, {"name": "nearr", "code": 8599, "desc": "Northeast arrow", "cat": "arrows"}, {"name": "searr", "code": 8600, "desc": "Southeast arrow", "cat": "arrows"}, {"name": "swarr", "code": 8601, "desc": "Southwest arrow", "cat": "arrows"}, {"name": "lArr", "code": 8656, "desc": "Left double arrow", "cat": "arrows"}, {"name": "uArr", "code": 8657, "desc": "Up double arrow", "cat": "arrows"}, {"name": "rArr", "code": 8658, "desc": "Right double arrow", "cat": "arrows"}, {"name": "dArr", "code": 8659, "desc": "Down double arrow", "cat": "arrows"}, {"name": "hArr", "code": 8660, "desc": "Left right double arrow", "cat": "arrows"}, {"name": "vArr", "code": 8661, "desc": "Up down double arrow", "cat": "arrows"}, {"name": "lsh", "code": 8624, "desc": "Up left arrow", "cat": "arrows"}, {"name": "rsh", "code": 8625, "desc": "Up right arrow", "cat": "arrows"}, {"name": "crarr", "code": 8629, "desc": "Carriage return arrow", "cat": "arrows"}, {"name": "lharu", "code": 8636, "desc": "Left harpoon up", "cat": "arrows"}, {"name": "lhard", "code": 8637, "desc": "Left harpoon down", "cat": "arrows"}, {"name": "rharu", "code": 8640, "desc": "Right harpoon up", "cat": "arrows"}, {"name": "rhard", "code": 8641, "desc": "Right harpoon down", "cat": "arrows"}, {"name": "uharu", "code": 8638, "desc": "Up harpoon right", "cat": "arrows"}, {"name": "dharu", "code": 8642, "desc": "Down harpoon right", "cat": "arrows"}, {"name": "loarr", "code": 8701, "desc": "Left open arrow", "cat": "arrows"}, {"name": "roarr", "code": 8702, "desc": "Right open arrow", "cat": "arrows"}, {"name": "xlarr", "code": 10229, "desc": "Long left arrow", "cat": "arrows"}, {"name": "xrarr", "code": 10230, "desc": "Long right arrow", "cat": "arrows"}, {"name": "xharr", "code": 10231, "desc": "Long left right arrow", "cat": "arrows"}, {"name": "xlArr", "code": 10232, "desc": "Long left double arrow", "cat": "arrows"}, {"name": "xrArr", "code": 10233, "desc": "Long right double arrow", "cat": "arrows"}, {"name": "xhArr", "code": 10234, "desc": "Long left right double arrow", "cat": "arrows"}, {"name": "curvearrowleft", "code": 8630, "desc": "Curve arrow left", "cat": "arrows"}, {"name": "curvearrowright", "code": 8631, "desc": "Curve arrow right", "cat": "arrows"}, {"name": "plus", "code": 43, "desc": "Plus sign", "cat": "math"}, {"name": "minus", "code": 8722, "desc": "Minus sign", "cat": "math"}, {"name": "times", "code": 215, "desc": "Multiplication", "cat": "math"}, {"name": "divide", "code": 247, "desc": "Division", "cat": "math"}, {"name": "equals", "code": 61, "desc": "Equals sign", "cat": "math"}, {"name": "ne", "code": 8800, "desc": "Not equal", "cat": "math"}, {"name": "asymp", "code": 8776, "desc": "Almost equal", "cat": "math"}, {"name": "equiv", "code": 8801, "desc": "Identical to", "cat": "math"}, {"name": "le", "code": 8804, "desc": "Less or equal", "cat": "math"}, {"name": "ge", "code": 8805, "desc": "Greater or equal", "cat": "math"}, {"name": "lt", "code": 60, "desc": "Less than", "cat": "math"}, {"name": "gt", "code": 62, "desc": "Greater than", "cat": "math"}, {"name": "infin", "code": 8734, "desc": "Infinity", "cat": "math"}, {"name": "sum", "code": 8721, "desc": "Summation", "cat": "math"}, {"name": "prod", "code": 8719, "desc": "Product", "cat": "math"}, {"name": "radic", "code": 8730, "desc": "Square root", "cat": "math"}, {"name": "int", "code": 8747, "desc": "Integral", "cat": "math"}, {"name": "part", "code": 8706, "desc": "Partial differential", "cat": "math"}, {"name": "nabla", "code": 8711, "desc": "Nabla / Del", "cat": "math"}, {"name": "isin", "code": 8712, "desc": "Element of", "cat": "math"}, {"name": "notin", "code": 8713, "desc": "Not element of", "cat": "math"}, {"name": "ni", "code": 8715, "desc": "Contains as member", "cat": "math"}, {"name": "sub", "code": 8834, "desc": "Subset of", "cat": "math"}, {"name": "sup", "code": 8835, "desc": "Superset of", "cat": "math"}, {"name": "sube", "code": 8838, "desc": "Subset or equal", "cat": "math"}, {"name": "supe", "code": 8839, "desc": "Superset or equal", "cat": "math"}, {"name": "nsub", "code": 8836, "desc": "Not subset of", "cat": "math"}, {"name": "cap", "code": 8745, "desc": "Intersection", "cat": "math"}, {"name": "cup", "code": 8746, "desc": "Union", "cat": "math"}, {"name": "and", "code": 8743, "desc": "Logical AND", "cat": "math"}, {"name": "or", "code": 8744, "desc": "Logical OR", "cat": "math"}, {"name": "not", "code": 172, "desc": "Not sign", "cat": "math"}, {"name": "there4", "code": 8756, "desc": "Therefore", "cat": "math"}, {"name": "because", "code": 8757, "desc": "Because", "cat": "math"}, {"name": "forall", "code": 8704, "desc": "For all", "cat": "math"}, {"name": "exist", "code": 8707, "desc": "There exists", "cat": "math"}, {"name": "nexist", "code": 8708, "desc": "Does not exist", "cat": "math"}, {"name": "empty", "code": 8709, "desc": "Empty set", "cat": "math"}, {"name": "prop", "code": 8733, "desc": "Proportional to", "cat": "math"}, {"name": "ang", "code": 8736, "desc": "Angle", "cat": "math"}, {"name": "perp", "code": 8869, "desc": "Perpendicular", "cat": "math"}, {"name": "sdot", "code": 8901, "desc": "Dot operator", "cat": "math"}, {"name": "lceil", "code": 8968, "desc": "Left ceiling", "cat": "math"}, {"name": "rceil", "code": 8969, "desc": "Right ceiling", "cat": "math"}, {"name": "lfloor", "code": 8970, "desc": "Left floor", "cat": "math"}, {"name": "rfloor", "code": 8971, "desc": "Right floor", "cat": "math"}, {"name": "plusmn", "code": 177, "desc": "Plus-minus", "cat": "math"}, {"name": "frac12", "code": 189, "desc": "One half", "cat": "math"}, {"name": "frac13", "code": 8531, "desc": "One third", "cat": "math"}, {"name": "frac14", "code": 188, "desc": "One quarter", "cat": "math"}, {"name": "frac34", "code": 190, "desc": "Three quarters", "cat": "math"}, {"name": "permil", "code": 8240, "desc": "Per mille", "cat": "math"}, {"name": "prime", "code": 8242, "desc": "Prime", "cat": "math"}, {"name": "Prime", "code": 8243, "desc": "Double prime", "cat": "math"}, {"name": "sim", "code": 8764, "desc": "Tilde operator", "cat": "math"}, {"name": "cong", "code": 8773, "desc": "Approximately equal", "cat": "math"}, {"name": "oplus", "code": 8853, "desc": "Circled plus", "cat": "math"}, {"name": "otimes", "code": 8855, "desc": "Circled times", "cat": "math"}, {"name": "dollar", "code": 36, "desc": "Dollar sign", "cat": "currency"}, {"name": "cent", "code": 162, "desc": "Cent sign", "cat": "currency"}, {"name": "pound", "code": 163, "desc": "Pound sign", "cat": "currency"}, {"name": "curren", "code": 164, "desc": "Currency sign", "cat": "currency"}, {"name": "yen", "code": 165, "desc": "Yen / Yuan sign", "cat": "currency"}, {"name": "euro", "code": 8364, "desc": "Euro sign", "cat": "currency"}, {"name": "rupee", "code": 8377, "desc": "Indian Rupee", "cat": "currency"}, {"name": "won", "code": 8361, "desc": "Korean Won", "cat": "currency"}, {"name": "ruble", "code": 8381, "desc": "Russian Ruble", "cat": "currency"}, {"name": "lira", "code": 8356, "desc": "Turkish Lira", "cat": "currency"}, {"name": "peso", "code": 8369, "desc": "Peso sign", "cat": "currency"}, {"name": "franc", "code": 8355, "desc": "French Franc", "cat": "currency"}, {"name": "shekel", "code": 8362, "desc": "Shekel sign", "cat": "currency"}, {"name": "baht", "code": 3647, "desc": "Thai Baht", "cat": "currency"}, {"name": "dong", "code": 8363, "desc": "Vietnamese Dong", "cat": "currency"}, {"name": "guarani", "code": 8370, "desc": "Guarani sign", "cat": "currency"}, {"name": "cedi", "code": 8373, "desc": "Cedi sign", "cat": "currency"}, {"name": "naira", "code": 8358, "desc": "Naira sign", "cat": "currency"}, {"name": "bitcoin", "code": 8383, "desc": "Bitcoin sign", "cat": "currency"}, {"name": "colone", "code": 8353, "desc": "Colon sign", "cat": "currency"}, {"name": "cruzeiro", "code": 8354, "desc": "Cruzeiro sign", "cat": "currency"}, {"name": "tenge", "code": 8376, "desc": "Tenge sign", "cat": "currency"}, {"name": "tugrik", "code": 8366, "desc": "Tugrik sign", "cat": "currency"}, {"name": "drachma", "code": 8367, "desc": "Drachma sign", "cat": "currency"}, {"name": "pfennig", "code": 8368, "desc": "German Penny", "cat": "currency"}, {"name": "mill", "code": 8357, "desc": "Mill sign", "cat": "currency"}, {"name": "austral", "code": 8371, "desc": "Austral sign", "cat": "currency"}, {"name": "hryvnia", "code": 8372, "desc": "Hryvnia sign", "cat": "currency"}, {"name": "kip", "code": 8365, "desc": "Kip sign", "cat": "currency"}, {"name": "spesmilo", "code": 8375, "desc": "Spesmilo sign", "cat": "currency"}, {"name": "Alpha", "code": 913, "desc": "Greek capital Alpha", "cat": "greek"}, {"name": "Beta", "code": 914, "desc": "Greek capital Beta", "cat": "greek"}, {"name": "Gamma", "code": 915, "desc": "Greek capital Gamma", "cat": "greek"}, {"name": "Delta", "code": 916, "desc": "Greek capital Delta", "cat": "greek"}, {"name": "Epsilon", "code": 917, "desc": "Greek capital Epsilon", "cat": "greek"}, {"name": "Zeta", "code": 918, "desc": "Greek capital Zeta", "cat": "greek"}, {"name": "Eta", "code": 919, "desc": "Greek capital Eta", "cat": "greek"}, {"name": "Theta", "code": 920, "desc": "Greek capital Theta", "cat": "greek"}, {"name": "Iota", "code": 921, "desc": "Greek capital Iota", "cat": "greek"}, {"name": "Kappa", "code": 922, "desc": "Greek capital Kappa", "cat": "greek"}, {"name": "Lambda", "code": 923, "desc": "Greek capital Lambda", "cat": "greek"}, {"name": "Mu", "code": 924, "desc": "Greek capital Mu", "cat": "greek"}, {"name": "Nu", "code": 925, "desc": "Greek capital Nu", "cat": "greek"}, {"name": "Xi", "code": 926, "desc": "Greek capital Xi", "cat": "greek"}, {"name": "Omicron", "code": 927, "desc": "Greek capital Omicron", "cat": "greek"}, {"name": "Pi", "code": 928, "desc": "Greek capital Pi", "cat": "greek"}, {"name": "Rho", "code": 929, "desc": "Greek capital Rho", "cat": "greek"}, {"name": "Sigma", "code": 931, "desc": "Greek capital Sigma", "cat": "greek"}, {"name": "Tau", "code": 932, "desc": "Greek capital Tau", "cat": "greek"}, {"name": "Upsilon", "code": 933, "desc": "Greek capital Upsilon", "cat": "greek"}, {"name": "Phi", "code": 934, "desc": "Greek capital Phi", "cat": "greek"}, {"name": "Chi", "code": 935, "desc": "Greek capital Chi", "cat": "greek"}, {"name": "Psi", "code": 936, "desc": "Greek capital Psi", "cat": "greek"}, {"name": "Omega", "code": 937, "desc": "Greek capital Omega", "cat": "greek"}, {"name": "alpha", "code": 945, "desc": "Greek small alpha", "cat": "greek"}, {"name": "beta", "code": 946, "desc": "Greek small beta", "cat": "greek"}, {"name": "gamma", "code": 947, "desc": "Greek small gamma", "cat": "greek"}, {"name": "delta", "code": 948, "desc": "Greek small delta", "cat": "greek"}, {"name": "epsilon", "code": 949, "desc": "Greek small epsilon", "cat": "greek"}, {"name": "zeta", "code": 950, "desc": "Greek small zeta", "cat": "greek"}, {"name": "eta", "code": 951, "desc": "Greek small eta", "cat": "greek"}, {"name": "theta", "code": 952, "desc": "Greek small theta", "cat": "greek"}, {"name": "iota", "code": 953, "desc": "Greek small iota", "cat": "greek"}, {"name": "kappa", "code": 954, "desc": "Greek small kappa", "cat": "greek"}, {"name": "lambda", "code": 955, "desc": "Greek small lambda", "cat": "greek"}, {"name": "mu", "code": 956, "desc": "Greek small mu", "cat": "greek"}, {"name": "nu", "code": 957, "desc": "Greek small nu", "cat": "greek"}, {"name": "xi", "code": 958, "desc": "Greek small xi", "cat": "greek"}, {"name": "omicron", "code": 959, "desc": "Greek small omicron", "cat": "greek"}, {"name": "pi", "code": 960, "desc": "Greek small pi", "cat": "greek"}, {"name": "rho", "code": 961, "desc": "Greek small rho", "cat": "greek"}, {"name": "sigmaf", "code": 962, "desc": "Greek small final sigma", "cat": "greek"}, {"name": "sigma", "code": 963, "desc": "Greek small sigma", "cat": "greek"}, {"name": "tau", "code": 964, "desc": "Greek small tau", "cat": "greek"}, {"name": "upsilon", "code": 965, "desc": "Greek small upsilon", "cat": "greek"}, {"name": "phi", "code": 966, "desc": "Greek small phi", "cat": "greek"}, {"name": "chi", "code": 967, "desc": "Greek small chi", "cat": "greek"}, {"name": "psi", "code": 968, "desc": "Greek small psi", "cat": "greek"}, {"name": "omega", "code": 969, "desc": "Greek small omega", "cat": "greek"}, {"name": "thetasym", "code": 977, "desc": "Greek theta symbol", "cat": "greek"}, {"name": "upsih", "code": 978, "desc": "Greek upsilon hook", "cat": "greek"}, {"name": "piv", "code": 982, "desc": "Greek pi symbol", "cat": "greek"}, {"name": "ndash", "code": 8211, "desc": "En dash", "cat": "punctuation"}, {"name": "mdash", "code": 8212, "desc": "Em dash", "cat": "punctuation"}, {"name": "lsquo", "code": 8216, "desc": "Left single quote", "cat": "punctuation"}, {"name": "rsquo", "code": 8217, "desc": "Right single quote", "cat": "punctuation"}, {"name": "sbquo", "code": 8218, "desc": "Single low-9 quote", "cat": "punctuation"}, {"name": "ldquo", "code": 8220, "desc": "Left double quote", "cat": "punctuation"}, {"name": "rdquo", "code": 8221, "desc": "Right double quote", "cat": "punctuation"}, {"name": "bdquo", "code": 8222, "desc": "Double low-9 quote", "cat": "punctuation"}, {"name": "hellip", "code": 8230, "desc": "Horizontal ellipsis", "cat": "punctuation"}, {"name": "bull", "code": 8226, "desc": "Bullet", "cat": "punctuation"}, {"name": "ensp", "code": 8194, "desc": "En space", "cat": "punctuation"}, {"name": "emsp", "code": 8195, "desc": "Em space", "cat": "punctuation"}, {"name": "thinsp", "code": 8201, "desc": "Thin space", "cat": "punctuation"}, {"name": "zwnj", "code": 8204, "desc": "Zero width non-joiner", "cat": "punctuation"}, {"name": "zwj", "code": 8205, "desc": "Zero width joiner", "cat": "punctuation"}, {"name": "lrm", "code": 8206, "desc": "Left-to-right mark", "cat": "punctuation"}, {"name": "rlm", "code": 8207, "desc": "Right-to-left mark", "cat": "punctuation"}, {"name": "shy", "code": 173, "desc": "Soft hyphen", "cat": "punctuation"}, {"name": "cedil", "code": 184, "desc": "Cedilla", "cat": "punctuation"}, {"name": "uml", "code": 168, "desc": "Diaeresis", "cat": "punctuation"}, {"name": "acute", "code": 180, "desc": "Acute accent", "cat": "punctuation"}, {"name": "tilde", "code": 732, "desc": "Small tilde", "cat": "punctuation"}, {"name": "circ", "code": 710, "desc": "Circumflex accent", "cat": "punctuation"}, {"name": "lsaquo", "code": 8249, "desc": "Single left angle quote", "cat": "punctuation"}, {"name": "rsaquo", "code": 8250, "desc": "Single right angle quote", "cat": "punctuation"}, {"name": "oline", "code": 8254, "desc": "Overline", "cat": "punctuation"}, {"name": "frasl", "code": 8260, "desc": "Fraction slash", "cat": "punctuation"}, {"name": "horbar", "code": 8213, "desc": "Horizontal bar", "cat": "punctuation"}, {"name": "hybull", "code": 8259, "desc": "Hyphen bullet", "cat": "punctuation"}, {"name": "nldr", "code": 8229, "desc": "Two dot leader", "cat": "punctuation"}, {"name": "lcub", "code": 123, "desc": "Left curly brace", "cat": "technical"}, {"name": "rcub", "code": 125, "desc": "Right curly brace", "cat": "technical"}, {"name": "lsqb", "code": 91, "desc": "Left square bracket", "cat": "technical"}, {"name": "rsqb", "code": 93, "desc": "Right square bracket", "cat": "technical"}, {"name": "lpar", "code": 40, "desc": "Left parenthesis", "cat": "technical"}, {"name": "rpar", "code": 41, "desc": "Right parenthesis", "cat": "technical"}, {"name": "at", "code": 64, "desc": "At sign", "cat": "technical"}, {"name": "num", "code": 35, "desc": "Number sign", "cat": "technical"}, {"name": "percnt", "code": 37, "desc": "Percent sign", "cat": "technical"}, {"name": "Hat", "code": 94, "desc": "Caret", "cat": "technical"}, {"name": "lowbar", "code": 95, "desc": "Underscore", "cat": "technical"}, {"name": "grave", "code": 96, "desc": "Grave accent", "cat": "technical"}, {"name": "vert", "code": 124, "desc": "Vertical bar", "cat": "technical"}, {"name": "bsol", "code": 92, "desc": "Backslash", "cat": "technical"}, {"name": "sol", "code": 47, "desc": "Solidus / Slash", "cat": "technical"}, {"name": "lang", "code": 10216, "desc": "Left angle bracket", "cat": "technical"}, {"name": "rang", "code": 10217, "desc": "Right angle bracket", "cat": "technical"}, {"name": "diam", "code": 8900, "desc": "Diamond operator", "cat": "technical"}, {"name": "sung", "code": 9834, "desc": "Eighth note", "cat": "technical"}, {"name": "telrec", "code": 8981, "desc": "Telephone recorder", "cat": "technical"}, {"name": "target", "code": 8982, "desc": "Position indicator", "cat": "technical"}, {"name": "ulcrop", "code": 8975, "desc": "Upper left crop", "cat": "technical"}, {"name": "urcrop", "code": 8974, "desc": "Upper right crop", "cat": "technical"}, {"name": "dlcrop", "code": 8973, "desc": "Lower left crop", "cat": "technical"}, {"name": "drcrop", "code": 8972, "desc": "Lower right crop", "cat": "technical"}, {"name": "ffilig", "code": 64259, "desc": "Latin small ffi", "cat": "technical"}, {"name": "fflig", "code": 64256, "desc": "Latin small ff", "cat": "technical"}, {"name": "filig", "code": 64257, "desc": "Latin small fi", "cat": "technical"}, {"name": "fllig", "code": 64258, "desc": "Latin small fl", "cat": "technical"}, {"name": "numero", "code": 8470, "desc": "Numero sign", "cat": "technical"}, {"name": "rx", "code": 8478, "desc": "Prescription sign", "cat": "technical"}, {"name": "ohm", "code": 8486, "desc": "Ohm sign", "cat": "technical"}, {"name": "mho", "code": 8487, "desc": "Inverted Ohm", "cat": "technical"}, {"name": "aleph", "code": 8501, "desc": "Aleph symbol", "cat": "technical"}, {"name": "beth", "code": 8502, "desc": "Beth symbol", "cat": "technical"}, {"name": "gimel", "code": 8503, "desc": "Gimel symbol", "cat": "technical"}, {"name": "daleth", "code": 8504, "desc": "Daleth symbol", "cat": "technical"}, {"name": "weierp", "code": 8472, "desc": "Weierstrass P", "cat": "technical"}, {"name": "image", "code": 8465, "desc": "Imaginary part", "cat": "technical"}, {"name": "real", "code": 8476, "desc": "Real part", "cat": "technical"}, {"name": "block", "code": 9608, "desc": "Full block", "cat": "shapes"}, {"name": "uhblk", "code": 9600, "desc": "Upper half block", "cat": "shapes"}, {"name": "lhblk", "code": 9604, "desc": "Lower half block", "cat": "shapes"}, {"name": "blk14", "code": 9617, "desc": "Light shade", "cat": "shapes"}, {"name": "blk12", "code": 9618, "desc": "Medium shade", "cat": "shapes"}, {"name": "blk34", "code": 9619, "desc": "Dark shade", "cat": "shapes"}, {"name": "squf", "code": 9642, "desc": "Black small square", "cat": "shapes"}, {"name": "squ", "code": 9633, "desc": "White square", "cat": "shapes"}, {"name": "rect", "code": 9645, "desc": "White rectangle", "cat": "shapes"}, {"name": "marker", "code": 9646, "desc": "Black vertical rectangle", "cat": "shapes"}, {"name": "fltns", "code": 9649, "desc": "White parallelogram", "cat": "shapes"}, {"name": "xutri", "code": 9651, "desc": "White up triangle", "cat": "shapes"}, {"name": "utrif", "code": 9652, "desc": "Black up small triangle", "cat": "shapes"}, {"name": "utri", "code": 9653, "desc": "White up small triangle", "cat": "shapes"}, {"name": "rtrif", "code": 9656, "desc": "Black right small triangle", "cat": "shapes"}, {"name": "rtri", "code": 9657, "desc": "White right small triangle", "cat": "shapes"}, {"name": "xdtri", "code": 9661, "desc": "White down triangle", "cat": "shapes"}, {"name": "dtrif", "code": 9662, "desc": "Black down small triangle", "cat": "shapes"}, {"name": "dtri", "code": 9663, "desc": "White down small triangle", "cat": "shapes"}, {"name": "ltrif", "code": 9666, "desc": "Black left small triangle", "cat": "shapes"}, {"name": "ltri", "code": 9667, "desc": "White left small triangle", "cat": "shapes"}, {"name": "loz", "code": 9674, "desc": "Lozenge", "cat": "shapes"}, {"name": "cir", "code": 9675, "desc": "White circle", "cat": "shapes"}, {"name": "tridot", "code": 9708, "desc": "White triangle with dot", "cat": "shapes"}, {"name": "bigcirc", "code": 9711, "desc": "Large circle", "cat": "shapes"}, {"name": "xcirc", "code": 9711, "desc": "Large circle", "cat": "shapes"}, {"name": "starf", "code": 9733, "desc": "Black star", "cat": "shapes"}, {"name": "star", "code": 9734, "desc": "White star", "cat": "shapes"}, {"name": "phone", "code": 9742, "desc": "Black telephone", "cat": "shapes"}, {"name": "female", "code": 9792, "desc": "Female sign", "cat": "shapes"}, {"name": "male", "code": 9794, "desc": "Male sign", "cat": "shapes"}, {"name": "spades", "code": 9824, "desc": "Black spade suit", "cat": "shapes"}, {"name": "clubs", "code": 9827, "desc": "Black club suit", "cat": "shapes"}, {"name": "hearts", "code": 9829, "desc": "Black heart suit", "cat": "shapes"}, {"name": "diams", "code": 9830, "desc": "Black diamond suit", "cat": "shapes"}, {"name": "sung", "code": 9834, "desc": "Eighth note", "cat": "shapes"}, {"name": "flat", "code": 9837, "desc": "Music flat sign", "cat": "shapes"}, {"name": "natur", "code": 9838, "desc": "Music natural sign", "cat": "shapes"}, {"name": "sharp", "code": 9839, "desc": "Music sharp sign", "cat": "shapes"}];
+
+const tbody = document.getElementById('entityBody');
+const searchInput = document.getElementById('searchInput');
+const searchCount = document.getElementById('searchCount');
+const noResults = document.getElementById('noResults');
+const tableWrap = document.querySelector('.table-wrap table');
+const toast = document.getElementById('toast');
+let currentCat = 'all';
+let toastTimer;
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function getEntityName(e) {
+  return e.name ? '&' + e.name + ';' : '';
+}
+
+function getEntityCode(e) {
+  return '&#' + e.code + ';';
+}
+
+function getChar(e) {
+  try { return String.fromCodePoint(e.code); } catch(x) { return ''; }
+}
+
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+}
+
+function copyText(text, btn, label) {
+  navigator.clipboard.writeText(text).then(() => {
+    showToast(label + ' copied!');
+    btn.classList.add('copied');
+    btn.textContent = '\u2713 Copied';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.textContent = btn.dataset.label;
+    }, 1500);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast(label + ' copied!');
+  });
+}
+
+function renderEntities() {
+  const query = searchInput.value.toLowerCase().trim();
+  const filtered = ENTITIES.filter(e => {
+    if (currentCat !== 'all' && e.cat !== currentCat) return false;
+    if (!query) return true;
+    const name = (e.name || '').toLowerCase();
+    const code = String(e.code);
+    const desc = e.desc.toLowerCase();
+    const char = getChar(e).toLowerCase();
+    return name.includes(query) || code.includes(query) || desc.includes(query) || char === query || ('&'+name+';').includes(query) || ('&#'+code+';').includes(query);
+  });
+
+  searchCount.textContent = filtered.length + ' of ' + ENTITIES.length + ' entities';
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '';
+    noResults.style.display = 'block';
+    return;
+  }
+  noResults.style.display = 'none';
+
+  const fragment = document.createDocumentFragment();
+  filtered.forEach(e => {
+    const tr = document.createElement('tr');
+    const char = getChar(e);
+    const eName = getEntityName(e);
+    const eCode = getEntityCode(e);
+
+    tr.innerHTML = '<td class="char-preview">' + char + '</td>'
+      + '<td>' + (eName ? '<span class="entity-name" title="Click to copy">' + escHtml(eName) + '</span>' : '<span style="color:var(--text-dim)">—</span>') + '</td>'
+      + '<td><span class="entity-code" title="Click to copy">' + escHtml(eCode) + '</span></td>'
+      + '<td class="desc">' + escHtml(e.desc) + '</td>'
+      + '<td><div class="copy-btns">'
+      + '<button class="copy-btn" data-label="Char" data-copy="' + escHtml(char) + '">Char</button>'
+      + (eName ? '<button class="copy-btn" data-label="Name" data-copy="' + escHtml(eName) + '">Name</button>' : '')
+      + '<button class="copy-btn" data-label="Code" data-copy="' + escHtml(eCode) + '">Code</button>'
+      + '</div></td>';
+
+    // Click on entity-name or entity-code to copy
+    const nameSpan = tr.querySelector('.entity-name');
+    if (nameSpan) nameSpan.addEventListener('click', () => { copyText(eName, nameSpan, 'Entity name'); });
+    const codeSpan = tr.querySelector('.entity-code');
+    if (codeSpan) codeSpan.addEventListener('click', () => { copyText(eCode, codeSpan, 'HTML code'); });
+
+    // Copy buttons
+    tr.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => copyText(btn.dataset.copy, btn, btn.dataset.label));
+    });
+
+    fragment.appendChild(tr);
+  });
+  tbody.innerHTML = '';
+  tbody.appendChild(fragment);
+}
+
+// Category buttons
+document.getElementById('categories').addEventListener('click', e => {
+  const btn = e.target.closest('.cat-btn');
+  if (!btn) return;
+  document.querySelectorAll('.cat-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected','true');
+  currentCat = btn.dataset.cat;
+  renderEntities();
+});
+
+// Search with debounce
+let debounce;
+searchInput.addEventListener('input', () => {
+  clearTimeout(debounce);
+  debounce = setTimeout(renderEntities, 200);
+});
+
+// Initial render
+renderEntities();
+</script>
+<script async src="https://cdn.sitemoney.co/monetize.js"></script>
+</body>
+</html>
