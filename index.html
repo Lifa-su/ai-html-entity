@@ -374,6 +374,60 @@ searchEl.addEventListener('input',e=>{query=e.target.value.trim();clearBtn.style
 
 initTabs();render();
 </script>
+<!-- Pro Section -->
+<style>
+.pro-section{max-width:1200px;margin:40px auto 0;padding:0 20px;position:relative;cursor:pointer}
+.pro-section .pro-title{font-size:1.2rem;font-weight:700;color:var(--accent);margin-bottom:16px;text-align:center}
+.pro-mock{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:24px;background:var(--surface);border-radius:16px;filter:blur(4px);pointer-events:none;user-select:none}
+.pro-mock-card{background:var(--card);border-radius:12px;padding:20px;text-align:center}
+.pro-mock-card .icon{font-size:2rem;margin-bottom:8px}
+.pro-mock-card h3{font-size:.9rem;color:var(--text);margin-bottom:6px}
+.pro-mock-card p{font-size:.75rem;color:var(--text2)}
+.pro-lock{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2}
+.pro-lock .lock-icon{font-size:3rem;margin-bottom:12px;filter:drop-shadow(0 4px 12px rgba(233,69,96,.4))}
+.pro-lock .lock-text{font-size:1.1rem;font-weight:600;color:#fff;background:rgba(233,69,96,.85);padding:8px 24px;border-radius:20px}
+.pro-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.pro-modal-overlay.show{display:flex}
+.pro-modal{background:var(--surface);border-radius:20px;padding:36px;max-width:440px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.pro-modal h2{font-size:1.4rem;color:#fff;margin-bottom:6px}
+.pro-modal .price{font-size:2rem;font-weight:800;color:var(--accent);margin:12px 0}
+.pro-modal .price span{font-size:.9rem;font-weight:400;color:var(--text2)}
+.pro-modal ul{list-style:none;text-align:left;margin:20px 0;padding:0}
+.pro-modal ul li{padding:8px 0;border-bottom:1px solid var(--border);color:#ccc;font-size:.9rem}
+.pro-modal ul li::before{content:'✅ ';margin-right:6px}
+.pro-modal .btn-upgrade{display:inline-block;width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),#c23152);color:#fff;font-size:1.05rem;font-weight:700;border:none;border-radius:12px;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;margin-bottom:12px}
+.pro-modal .btn-upgrade:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(233,69,96,.4)}
+.pro-modal .btn-later{background:none;border:none;color:var(--text2);font-size:.9rem;cursor:pointer;padding:8px}
+.pro-modal .btn-later:hover{color:#ccc}
+@media(max-width:640px){.pro-mock{grid-template-columns:1fr}}
+</style>
+<div class="pro-section" onclick="document.getElementById('proModal').classList.add('show')">
+  <div class="pro-title">⚡ Pro Features</div>
+  <div class="pro-mock">
+    <div class="pro-mock-card"><div class="icon">⭐</div><h3>Custom Favorites</h3><p>Save & organize your most-used entities</p></div>
+    <div class="pro-mock-card"><div class="icon">🔄</div><h3>Batch Convert</h3><p>Convert entire text blocks to HTML entities</p></div>
+    <div class="pro-mock-card"><div class="icon">🔌</div><h3>Entity API</h3><p>REST API for programmatic entity lookup</p></div>
+  </div>
+  <div class="pro-lock">
+    <div class="lock-icon">🔒</div>
+    <div class="lock-text">Unlock Pro Features</div>
+  </div>
+</div>
+<div class="pro-modal-overlay" id="proModal" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="pro-modal">
+    <h2>HTML Entity Pro</h2>
+    <div class="price">$9 <span>one-time</span></div>
+    <ul>
+      <li>Custom favorites — save & organize entities</li>
+      <li>Batch convert entire text blocks</li>
+      <li>REST API for programmatic lookup</li>
+      <li>Extended library (1000+ entities)</li>
+      <li>Lifetime updates</li>
+    </ul>
+    <a class="btn-upgrade" href="https://feifeicch.gumroad.com/l/ai-html-entity-pro" target="_blank">Upgrade to Pro — $9</a>
+    <button class="btn-later" onclick="event.stopPropagation();document.getElementById('proModal').classList.remove('show')">Maybe later</button>
+  </div>
+</div>
 <script src="https://cdn.jsdelivr.net/gh/nicegoodthings/monetize.js@latest/monetize.min.js" defer></script>
 </body>
 </html>
